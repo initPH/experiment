@@ -1,130 +1,743 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br />
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener"
-        >vue-cli documentation</a
-      >.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
-          target="_blank"
-          rel="noopener"
-          >babel</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router"
-          target="_blank"
-          rel="noopener"
-          >router</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
-          target="_blank"
-          rel="noopener"
-          >eslint</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript"
-          target="_blank"
-          rel="noopener"
-          >typescript</a
-        >
-      </li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li>
-        <a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a>
-      </li>
-      <li>
-        <a href="https://forum.vuejs.org" target="_blank" rel="noopener"
-          >Forum</a
-        >
-      </li>
-      <li>
-        <a href="https://chat.vuejs.org" target="_blank" rel="noopener"
-          >Community Chat</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/vuejs" target="_blank" rel="noopener"
-          >Twitter</a
-        >
-      </li>
-      <li>
-        <a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a>
-      </li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li>
-        <a href="https://router.vuejs.org" target="_blank" rel="noopener"
-          >vue-router</a
-        >
-      </li>
-      <li>
-        <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/vue-devtools#vue-devtools"
-          target="_blank"
-          rel="noopener"
-          >vue-devtools</a
-        >
-      </li>
-      <li>
-        <a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener"
-          >vue-loader</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-          rel="noopener"
-          >awesome-vue</a
-        >
-      </li>
-    </ul>
+  <div class="silder-container">
+    <div v-for="(data, key, index) in obj" :key="key">
+      <div class="full-gallery">
+        <vue-slider
+          :railStyle="{
+            background: processColors[index % processColors.length] + '44',
+          }"
+          :processStyle="{
+            background: processColors[index % processColors.length],
+          }"
+          class="vue-slider"
+          :dotSize="14"
+          :tooltip="'active'"
+          height="23px"
+          :style="getSliderStyle(data.range)"
+          v-model="data.select"
+          :data="data.range"
+          :tooltip-placement="['left', 'right']"
+          adsorb
+        ></vue-slider>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import VueSlider from 'vue-slider-component';
+import { Component, Vue } from 'vue-property-decorator';
+import 'vue-slider-component/theme/default.css';
 
-@Component
+@Component({
+  name: 'HelloWorld',
+  components: {
+    VueSlider,
+  },
+})
 export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
+  fullWidth = 500;
+  processColors = ['#F5C30F', '#4458FE', '#858EBD'];
+
+  datas: any = {
+    '207261017561705': [
+      1.5157,
+      1.4775,
+      1.4378,
+      1.476,
+      1.5177,
+      1.515,
+      1.5841,
+      1.5997,
+      1.6021,
+      1.5575,
+      1.5433,
+      1.5852,
+      1.5673,
+      1.5798,
+      1.5907,
+      1.594,
+      1.563,
+      1.552,
+      1.5353,
+      1.5581,
+      1.575,
+      1.5928,
+      1.607,
+      1.6569,
+      1.691,
+      1.6978,
+      1.6446,
+      1.6493,
+      1.6906,
+      1.8453,
+      1.7403,
+      1.8982,
+      1.8014,
+      1.7204,
+      1.657,
+      1.6927,
+      1.7303,
+      1.7715,
+      1.7609,
+      1.8111,
+      1.8903,
+      1.894,
+      1.829,
+      1.8684,
+      1.9431,
+      1.9663,
+      2.042,
+      2.0844,
+      2.1728,
+      2.3974,
+      2.2922,
+      2.2891,
+      2.4327,
+      2.4586,
+      2.4307,
+      2.4588,
+      2.5675,
+      2.54,
+      2.4038,
+      2.462,
+      2.4112,
+      2.4422,
+      2.5167,
+      2.5686,
+      2.4548,
+      2.4892,
+      2.5482,
+      2.5313,
+      2.5418,
+      2.4758,
+      2.594,
+      2.5391,
+      2.6114,
+      2.6254,
+      2.7008,
+      2.7133,
+      2.7244,
+      2.8383,
+      2.7047,
+      2.6244,
+      2.7416,
+      2.8435,
+      2.757,
+      2.7683,
+      2.6909,
+      2.6404,
+      2.692,
+      2.8213,
+      2.7649,
+      2.729,
+      2.8611,
+      2.8832,
+      2.802,
+      2.8408,
+      2.8985,
+      3.0058,
+      3.0303,
+      3.024,
+      2.9908,
+      3.0912,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+    ],
+    '207311400234946': [
+      2.1426, 2.0998, 1.9929, 2.069, 2.1533, 2.1471, 2.2811, 2.333, 2.3208,
+      2.2368, 2.2124, 2.2757, 2.2346, 2.269, 2.2781, 2.3015, 2.2405, 2.2549,
+      2.2443, 2.3124, 2.3503, 2.4022, 2.3964, 2.4913, 2.5557, 2.5718, 2.5015,
+      2.4725, 2.5226, 2.7162, 2.576, 2.7191, 2.5828, 2.4933, 2.4882, 2.4722,
+      2.5377, 2.6031, 2.5808, 2.6449, 2.7276, 2.7508, 2.6781, 2.7285, 2.8463,
+      2.8791, 2.9961, 3.0159, 3.1324, 3.4355, 3.3524, 3.3619, 3.5632, 3.6341,
+      3.631, 3.6584, 3.7298, 3.7168, 3.5443, 3.6604, 3.5412, 3.5381, 3.6468,
+      3.7324, 3.6271, 3.5698, 3.6857, 3.689, 3.763, 3.6958, 3.7735, 3.638,
+      3.6845, 3.6758, 3.7197, 3.7825, 3.7518, 3.911, 3.7518, 3.7076, 3.8667,
+      3.9709, 3.8228, 3.8762, 3.7789, 3.809, 3.8494, 3.9005, 3.9277, 3.9121,
+      4.0278, 4.0627, 4.0101, 4.083, 4.1314, 4.2572, 4.3511, 4.4048, 4.42,
+      4.6164, 4.5997, 4.8502, 4.9921, 5.1128, 4.9891, 5.1539, 5.3906, 5.2325,
+      5.547, 5.5152, 5.7891, 5.6713, 5.5418, 5.1413, 5.1214, 5.0792, 5.1078,
+      4.9545, 4.7908, 4.944, 4.9805, 5.0542, 5.1435, 5.151, 5.1619, 5.1129,
+      5.2367, 5.0928, 5.0821, 4.9457, 4.657, 4.706, 4.8318, 4.8671, 4.8572,
+      4.7047, 4.7589, 4.77, 4.7979, 4.6653, 4.5068, 4.2567, 4.0296, 4.0494,
+      4.3346,
+    ],
+    '208271515400878': [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      1,
+      1,
+      1,
+      1.001,
+      0.999,
+      0.997,
+      0.997,
+      0.996,
+      0.999,
+      1.002,
+      1.004,
+      0.999,
+      0.995,
+      0.992,
+      0.986,
+      0.986,
+      0.989,
+      0.984,
+      0.99,
+      0.995,
+      0.974,
+      0.968,
+      0.969,
+      0.97,
+      0.97,
+      0.971,
+      0.971,
+      0.972,
+      0.972,
+      0.971,
+      0.972,
+      0.971,
+      0.973,
+      0.973,
+      0.972,
+      0.975,
+      0.975,
+      0.974,
+      0.979,
+      0.986,
+      0.99,
+      0.993,
+      0.995,
+      0.999,
+      1.014,
+      1.011,
+      1.028,
+      1.03,
+      1.03,
+      1.03,
+      1.03,
+      1.03,
+      1.03,
+      1.03,
+      1.03,
+      1.172,
+      1.177,
+      1.179,
+      1.178,
+      1.178,
+      1.206,
+      1.209,
+      1.267,
+      1.267,
+      1.296,
+      1.001,
+      1.03,
+      1.037,
+      1.07,
+      1.069,
+      1.068,
+      1.068,
+      1.069,
+      1.092,
+      1.09,
+      1.088,
+      1.088,
+      1.103,
+      1.103,
+      1.099,
+      1.099,
+      4.493,
+      4.463,
+      4.466,
+      4.466,
+      15.165,
+      15.169,
+      15.169,
+      15.18,
+      15.184,
+    ],
+    S2104021723370011: [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      1.0621,
+      1.0621,
+      1.0621,
+      1.0177,
+      1.0177,
+      1.05,
+      1.05,
+      1.05,
+      1.05,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+    ],
+    benc_nav: [
+      3858.5688, 3747.4379, 3633.5296, 3710.5386, 3820.8638, 3799.5863,
+      3948.5075, 3972.3799, 3935.6511, 3852.6534, 3814.5282, 3911.7253,
+      3869.3777, 3896.7923, 3952.3872, 3973.0107, 3877.0892, 3849.9948,
+      3828.6706, 3902.3853, 3968.2211, 4017.2527, 4022.0278, 4144.9649,
+      4163.1849, 4154.853, 4003.9013, 3899.8693, 3987.7342, 4149.4903,
+      3940.0488, 4138.5072, 3895.3128, 3653.2239, 3710.0605, 3713.2183,
+      3769.1782, 3839.4871, 3796.9721, 3912.5772, 3963.6217, 3912.8159,
+      3824.064, 3867.0232, 4001.2509, 4003.0829, 4098.7095, 4138.9895,
+      4419.5955, 4753.1333, 4544.7007, 4505.5906, 4695.0462, 4707.9262,
+      4704.6288, 4718.8431, 4844.2652, 4770.219, 4627.2826, 4737.0887,
+      4570.0216, 4587.3953, 4681.1412, 4791.676, 4718.4881, 4695.3338,
+      4885.7178, 4856.8513, 4943.2882, 4980.765, 5065.9163, 4889.6292,
+      4999.9678, 5042.0137, 5211.2885, 5495.4306, 5458.0812, 5569.776,
+      5351.9646, 5483.414, 5807.7191, 5778.842, 5336.7609, 5262.7958, 5146.3786,
+      5007.0907, 5037.9899, 5161.5569, 5035.3374, 4966.1811, 5135.4534,
+      5123.489, 4996.0527, 5110.5901, 5134.1483, 5321.0886, 5282.2772, 5224.703,
+      5102.4657, 5239.9684, 5081.1172, 5069.4361, 5094.7727, 5089.2282,
+      4811.1695, 4921.5647, 4945.9829, 4769.2678, 4827.0433, 4843.0624,
+      5013.5219, 4855.9402, 4849.4277, 4866.3826, 4929.9409, 4932.1084,
+      4959.7254, 4908.7701, 4842.3458, 4888.3749, 4890.0575, 4860.1265,
+      4901.0175, 5055.1172, 4954.7599, 4921.3449, 4940.3733, 4822.3689,
+      4726.7317, 4779.3142, 4563.772, 4601.3953, 4651.2358, 4573.4247,
+      4496.4301, 4306.5217, 4265.9017, 4174.5742, 4276.158, 4230.7669,
+      4188.7472, 4013.2498, 4016.241, 3908.815, 3988.6002,
+    ],
+  };
+
+  obj: any = {};
+
+  get tradingDay(): string[] {
+    return [
+      '20190726',
+      '20190802',
+      '20190809',
+      '20190816',
+      '20190823',
+      '20190830',
+      '20190906',
+      '20190912',
+      '20190920',
+      '20190927',
+      '20190930',
+      '20191011',
+      '20191018',
+      '20191025',
+      '20191101',
+      '20191108',
+      '20191115',
+      '20191122',
+      '20191129',
+      '20191206',
+      '20191213',
+      '20191220',
+      '20191227',
+      '20200103',
+      '20200110',
+      '20200117',
+      '20200123',
+      '20200207',
+      '20200214',
+      '20200221',
+      '20200228',
+      '20200306',
+      '20200313',
+      '20200320',
+      '20200327',
+      '20200403',
+      '20200410',
+      '20200417',
+      '20200424',
+      '20200430',
+      '20200508',
+      '20200515',
+      '20200522',
+      '20200529',
+      '20200605',
+      '20200612',
+      '20200619',
+      '20200624',
+      '20200703',
+      '20200710',
+      '20200717',
+      '20200724',
+      '20200731',
+      '20200807',
+      '20200814',
+      '20200821',
+      '20200828',
+      '20200904',
+      '20200911',
+      '20200918',
+      '20200925',
+      '20200930',
+      '20201009',
+      '20201016',
+      '20201023',
+      '20201030',
+      '20201106',
+      '20201113',
+      '20201120',
+      '20201127',
+      '20201204',
+      '20201211',
+      '20201218',
+      '20201225',
+      '20201231',
+      '20210108',
+      '20210115',
+      '20210122',
+      '20210129',
+      '20210205',
+      '20210210',
+      '20210219',
+      '20210226',
+      '20210305',
+      '20210312',
+      '20210319',
+      '20210326',
+      '20210402',
+      '20210409',
+      '20210416',
+      '20210423',
+      '20210430',
+      '20210507',
+      '20210514',
+      '20210521',
+      '20210528',
+      '20210604',
+      '20210611',
+      '20210618',
+      '20210625',
+      '20210702',
+      '20210709',
+      '20210716',
+      '20210723',
+      '20210730',
+      '20210806',
+      '20210813',
+      '20210820',
+      '20210827',
+      '20210903',
+      '20210910',
+      '20210917',
+      '20210924',
+      '20210930',
+      '20211008',
+      '20211015',
+      '20211022',
+      '20211029',
+      '20211105',
+      '20211112',
+      '20211119',
+      '20211126',
+      '20211203',
+      '20211210',
+      '20211217',
+      '20211224',
+      '20211231',
+      '20220107',
+      '20220114',
+      '20220121',
+      '20220128',
+      '20220211',
+      '20220218',
+      '20220225',
+      '20220304',
+      '20220311',
+      '20220318',
+      '20220325',
+      '20220401',
+      '20220408',
+      '20220415',
+      '20220422',
+      '20220429',
+      '20220506',
+      '20220513',
+    ];
+  }
+  // 获取slider实际的宽度
+  getSliderStyle(dataRange: string[]): any {
+    if (Array.isArray(dataRange)) {
+      const width =
+        this.fullWidth * (dataRange.length / this.tradingDay.length) + 'px';
+      const left =
+        (this.tradingDay.indexOf(dataRange[0]) / this.tradingDay.length) * 100 +
+        '%';
+      return {
+        width,
+        left,
+      };
+    }
+    return '';
+  }
+
+  mounted(): void {
+    for (let key in this.datas) {
+      const data = this.datas[key];
+      // 把有数据的日期找到
+      const range = this.tradingDay.filter((each, index) => data[index]);
+      this.$set(this.obj, key, {
+        range,
+        select: [range[0], range[range.length - 1]],
+      });
+    }
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.silder-container {
+  width: 700px;
+  padding: 0 100px;
+  ::v-deep {
+    .vue-slider {
+      width: 100%;
+      box-sizing: border-box;
+      .vue-slider-dot-handle {
+        // opacity: 0;
+        &:hover {
+          opacity: 1;
+        }
+        transition: all 0.2s;
+      }
+    }
+  }
+  .full-gallery {
+    position: relative;
+    height: 9px;
+    margin-top: 7px;
+    border-radius: 15px;
+    width: 100%;
+    background: rgba(191, 197, 210, 0.4);
+    .vue-slider {
+      position: absolute;
+      top: -7px;
+    }
+  }
 }
 </style>
